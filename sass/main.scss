@@ -1,0 +1,254 @@
+$color-turq: #03daff;
+$color-red: red;
+$color-pwblue: powderblue;
+$color-nearby: #3462a6;
+
+@mixin clear {
+  padding: 0;
+  margin: 0 auto;
+}
+
+// keyframes mixin
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+//animation
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@mixin carousel-sizing($size) {
+  .carousel-item {
+    width: $size * 1vw;
+    height: auto;
+  }
+}
+
+.container {
+  padding-top: 2vh;
+  text-align: center;
+}
+
+// navbar
+#navbar {
+  .nav-item a {
+    color: darkblue;
+    font-weight: 600;
+  }
+}
+
+.bg-init {
+  transition: 300ms ease;
+  background-color: $color-turq;
+  &.scrolled {
+    background-color: #2c2c2c;
+    #navlink {
+      & {
+        color: white;
+      }
+    }
+  }
+}
+
+@include keyframes(slide-down) {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 2em);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+// header
+#header {
+  height: 80vh;
+  background-color: $color-turq;
+  .container {
+    @include clear();
+    .head {
+      height: 80vh;
+    }
+    img {
+      height: 80%;
+      width: 100%;
+    }
+    #logo-gopay {
+      @include animation("slide-down 5s 3");
+      animation-iteration-count: infinite;
+    }
+    #logo-cewe {
+      position: absolute;
+      top: 0;
+      right: 1vw;
+      @include animation("slide-down 8s 3");
+      animation-iteration-count: infinite;
+      z-index: 1000;
+
+      box-sizing: border-box;
+    }
+    #gedung {
+      height: 100%;
+      z-index: 0;
+    }
+    #awan {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      z-index: 0;
+    }
+  }
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 5vh;
+}
+
+h4 {
+  @extend h3;
+}
+
+#cek-nearby {
+  background-color: $color-nearby;
+  img {
+    width: 100%;
+  }
+}
+
+#rekan-usaha {
+  background-color: $color-turq;
+  height: 95vh;
+  position: relative;
+  #decorawan1 {
+    position: absolute;
+  }
+  #header-3 {
+    width: 100%;
+  }
+  @include carousel-sizing(110);
+  ul {
+    width: 100%;
+    li {
+      margin: 0 auto;
+      color: white;
+      font-weight: 500;
+    }
+  }
+}
+
+#tempat-fav {
+  background-color: aquamarine;
+  height: 50vh;
+  .container {
+    height: 40vh;
+    .inner-container {
+      margin: 0 20%;
+      justify-content: center;
+      width: 60%;
+      height: 80%;
+      background-color: $color-red;
+      border-bottom: 0.2em solid black;
+    }
+    .modal-content.my-modal {
+      margin-top: 25vh;
+    }
+    .modal-footer {
+      justify-content: center;
+      .btn {
+        border-radius: 2em;
+        background-color: $color-turq;
+        border: none;
+      }
+    }
+    button.close {
+      background-color: $color-turq;
+      border: none;
+      border-radius: 3em;
+      width: 4vw;
+    }
+  }
+}
+
+#kota-rekan-usaha {
+  justify-content: center;
+  background-color: $color-pwblue;
+  height: 100vh;
+  .container {
+    .kota-usaha {
+      width: 25vw;
+      height: auto;
+      background-color: $color-red;
+      // margin: 0 auto;
+    }
+    .btn {
+      margin-top: 5vh;
+    }
+  }
+}
+
+#layanan-gojek {
+  background-color: $color-turq;
+  height: 95vh;
+  @include carousel-sizing(50);
+}
+
+#rekan-usaha-online {
+  justify-content: center;
+  background-color: $color-pwblue;
+  height: 120vh;
+  @include carousel-sizing(50);
+  .btn-down {
+    border: none;
+    background-color: transparent;
+  }
+}
+
+#persiapan {
+  justify-content: center;
+  background-color: $color-turq;
+  height: 100vh;
+  @include carousel-sizing(75);
+  iframe {
+    margin-top: 3em;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 300px;
+    width: 100%;
+  }
+}
+
+#kata-mereka {
+  height: 100vh;
+  background-color: $color-pwblue;
+  .kata {
+    height: 40vh;
+    background-color: $color-red;
+  }
+}
+
+#faq {
+  height: 100vh;
+  background-color: $color-turq;
+}
